@@ -5,7 +5,9 @@
   "version": "0.1",
   "permissions": [
     "tabs",
-    "activeTab"
+    "activeTab",
+    "http://*/*",
+    "https://*/*"
   ],
   "icons": {
     "16": "pokeball.png"
