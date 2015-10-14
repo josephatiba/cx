@@ -15,6 +15,7 @@ var getJSON = function(url, successHandler, errorHandler) {
 
 var collection1;
 var organizedArray = [];
+var elem = document.getElementById("container");
 
 getJSON('https://www.kimonolabs.com/api/8vxwsdyg?apikey=pyYBq6V9vfETkm5a623NvgQ65PnWAzuR', function(data) {
   console.log(data.results.collection1);
@@ -22,7 +23,7 @@ getJSON('https://www.kimonolabs.com/api/8vxwsdyg?apikey=pyYBq6V9vfETkm5a623NvgQ6
 
   var organizer = function(array) {
     for(var i = 0; i < array.length; i++){
-      organizedArray.push([array[i]["post-picture"]["src"], array[i]["post-picture"]["href"], array[i]["property4"]["text"]]);
+      organizedArray.push([array[i]["post-picture"]["src"], array[i]["property4"]["href"], array[i]["property4"]["text"]]);
       var newDiv = document.createElement("div");
       var newLink = document.createElement("a");
       var newTitle = document.createTextNode(organizedArray[i][2]);
@@ -40,10 +41,11 @@ getJSON('https://www.kimonolabs.com/api/8vxwsdyg?apikey=pyYBq6V9vfETkm5a623NvgQ6
       newTitle.className = "main-page-post-title";
 
       newLink.href = organizedArray[i][1];
+      newLink.target = "_blank";
       newImg.src = organizedArray[i][0];
       newImg.alt = organizedArray[i][2];
-      var container = document.getElementById("container");
-      container.appendChild(newDiv);
+      
+      elem.appendChild(newDiv);
   
     }
       console.log(organizedArray);
@@ -51,11 +53,12 @@ getJSON('https://www.kimonolabs.com/api/8vxwsdyg?apikey=pyYBq6V9vfETkm5a623NvgQ6
       return organizedArray;
   };
 
-
-
+ 
   organizer(collection1);
 
-  var elem = document.querySelector('#container');
+
+
+  
 
   console.log(elem);
 
@@ -63,7 +66,7 @@ getJSON('https://www.kimonolabs.com/api/8vxwsdyg?apikey=pyYBq6V9vfETkm5a623NvgQ6
     // options
     itemSelector: '.grid-item',
     columnWidth: 315
-  })
+  });
 
 }, function(status) {
   alert('Something went wrong.');
