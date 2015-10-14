@@ -24,10 +24,26 @@ getJSON('https://www.kimonolabs.com/api/8vxwsdyg?apikey=pyYBq6V9vfETkm5a623NvgQ6
     for(var i = 0; i < array.length; i++){
       organizedArray.push([array[i]["post-picture"]["src"], array[i]["post-picture"]["href"], array[i]["property4"]["text"]]);
       var newDiv = document.createElement("div");
+      var newLink = document.createElement("a");
       var newTitle = document.createTextNode(organizedArray[i][2]);
-      newDiv.appendChild(newTitle);
-      var currentDiv = document.getElementById("div1"); 
-      document.body.insertBefore(newDiv, currentDiv); 
+      var newImg = document.createElement("img");
+
+      
+      
+      newDiv.appendChild(newLink);
+      newLink.appendChild(newImg);
+      
+
+      newDiv.className = "grid-item";
+      newLink.className = "post-index-link";
+      newImg.className = "post-index-tile";
+      newTitle.className = "main-page-post-title";
+
+      newLink.href = organizedArray[i][1];
+      newImg.src = organizedArray[i][0];
+      var container = document.getElementById("container");
+      container.appendChild(newDiv);
+  
     }
       console.log(organizedArray);
 
@@ -37,6 +53,16 @@ getJSON('https://www.kimonolabs.com/api/8vxwsdyg?apikey=pyYBq6V9vfETkm5a623NvgQ6
 
 
   organizer(collection1);
+
+  // var elem = document.querySelector('#container');
+
+  // console.log(elem);
+
+  var msnry = new Masonry( container, {
+    // options
+    itemSelector: '.grid-item',
+    columnWidth: 315
+  });
 
 }, function(status) {
   alert('Something went wrong.');
@@ -54,7 +80,8 @@ getJSON('https://www.kimonolabs.com/api/8vxwsdyg?apikey=pyYBq6V9vfETkm5a623NvgQ6
 //   }
 // };
 
-console.log(organizedArray);
+
+
 
 
 // document.body.appendChild(organizedArray[0][0]);
