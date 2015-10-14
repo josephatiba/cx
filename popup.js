@@ -16,18 +16,24 @@ var getJSON = function(url, successHandler, errorHandler) {
 var collection1;
 var organizedArray = [];
 var elem = document.getElementById("container");
+var newDiv;
+var newLink;
+var newTitle;
+var newImg;
+var organizer;
 
 getJSON('https://www.kimonolabs.com/api/8vxwsdyg?apikey=pyYBq6V9vfETkm5a623NvgQ65PnWAzuR', function(data) {
+  var msnry;
   console.log(data.results.collection1);
   collection1 = data.results.collection1;
 
-  var organizer = function(array) {
+  organizer = function(array) {
     for(var i = 0; i < array.length; i++){
       organizedArray.push([array[i]["post-picture"]["src"], array[i]["property4"]["href"], array[i]["property4"]["text"]]);
-      var newDiv = document.createElement("div");
-      var newLink = document.createElement("a");
-      var newTitle = document.createTextNode(organizedArray[i][2]);
-      var newImg = document.createElement("img");
+      newDiv = document.createElement("div");
+      newLink = document.createElement("a");
+      newTitle = document.createTextNode(organizedArray[i][2]);
+      newImg = document.createElement("img");
 
       
       
@@ -57,12 +63,7 @@ getJSON('https://www.kimonolabs.com/api/8vxwsdyg?apikey=pyYBq6V9vfETkm5a623NvgQ6
   organizer(collection1);
 
 
-
-  
-
-  console.log(elem);
-
-  var msnry = new Masonry( elem, {
+  msnry = new Masonry( elem, {
     // options
     itemSelector: '.grid-item',
     columnWidth: 315
