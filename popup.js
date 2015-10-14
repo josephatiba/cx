@@ -69,22 +69,6 @@ getJSON('https://www.kimonolabs.com/api/8vxwsdyg?apikey=pyYBq6V9vfETkm5a623NvgQ6
   alert('Something went wrong.');
 });
 
-// var imageAdder = function(array) {
-//   for(var i = 0; i < array.length; i++) {
-//     var newDiv = document.createElement("div");
-//     var newImg = document.createElement("img");
-//     var newTitle = document.createTextNode(array[i][2]);
-//     newDiv.appendChild(newTitle);
-//     var currentTag = document.getElementById("theH1");
-//     document.body.insertBefore(newDiv, currentTag);
-//     console.log("yup");
-//   }
-// };
 
-
-
-
-
-// document.body.appendChild(organizedArray[0][0]);
 
 
