@@ -41,6 +41,7 @@ getJSON('https://www.kimonolabs.com/api/8vxwsdyg?apikey=pyYBq6V9vfETkm5a623NvgQ6
 
       newLink.href = organizedArray[i][1];
       newImg.src = organizedArray[i][0];
+      newImg.alt = organizedArray[i][2];
       var container = document.getElementById("container");
       container.appendChild(newDiv);
   
@@ -54,15 +55,15 @@ getJSON('https://www.kimonolabs.com/api/8vxwsdyg?apikey=pyYBq6V9vfETkm5a623NvgQ6
 
   organizer(collection1);
 
-  // var elem = document.querySelector('#container');
+  var elem = document.querySelector('#container');
 
-  // console.log(elem);
+  console.log(elem);
 
-  var msnry = new Masonry( container, {
+  var msnry = new Masonry( elem, {
     // options
     itemSelector: '.grid-item',
     columnWidth: 315
-  });
+  })
 
 }, function(status) {
   alert('Something went wrong.');
